@@ -10,7 +10,7 @@ import {
   InMemoryCache,
   gql,
   useReadQuery_experimental as useReadQuery,
-  useBackgroundQuery_experimental as useBackgroundQuery
+  useBackgroundQuery_experimental as useBackgroundQuery,
 } from "@apollo/client";
 
 import { link } from "./link.js";
@@ -42,7 +42,7 @@ function Child({ queryRef, fetchMore }) {
   );
 }
 
-function List({queryRef}) {
+function List({ queryRef }) {
   const { data, error } = useReadQuery(queryRef);
   return (
     <Suspense fallback={<div>Other loading...</div>}>
@@ -58,8 +58,8 @@ function List({queryRef}) {
 }
 
 function App() {
-  const { queryRef, fetchMore } = useBackgroundQuery(query, {
-    variables: { offset: 0, limit: 2 }
+  const [queryRef, { fetchMore }] = useBackgroundQuery(query, {
+    variables: { offset: 0, limit: 2 },
   });
 
   return (
@@ -72,7 +72,7 @@ function App() {
 const suspenseCache = new SuspenseCache();
 const client = new ApolloClient({
   cache: new InMemoryCache(),
-  link
+  link,
 });
 
 const container = document.getElementById("root");
