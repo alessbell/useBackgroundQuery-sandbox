@@ -6,7 +6,7 @@
   "main": "src/index.jsx",
   "dependencies": {
     "@apollo/client": "0.0.0-pr-10888-20230517165635",
-    "graphql": "16.6.0",
+    "graphql": "16.7.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-error-boundary": "4.0.4",
